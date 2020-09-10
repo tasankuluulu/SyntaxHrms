@@ -36,6 +36,9 @@ public class AddEmployeePageElements extends BaseClass {
 
 	@FindBy(id = "re_password")
 	public WebElement confirmPassword;
+	
+	@FindBy(xpath = "//div[@id='profile-pic']/h1")
+	public WebElement empInfo;
 
 	public AddEmployeePageElements() {
 		PageFactory.initElements(driver, this);

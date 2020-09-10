@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Smoke]">
+  <listeners>
+    <listener class-name="com.hrms.utils.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="Smoke(failed)">
+    <groups>
+      <run>
+        <include name="smoke"/>
+      </run>
+    </groups>
     <classes>
       <class name="com.hrms.testcases.AddEmployeesTest">
         <methods>
@@ -11,5 +19,5 @@
         </methods>
       </class> <!-- com.hrms.testcases.AddEmployeesTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Smoke(failed) -->
+</suite> <!-- Failed suite [Smoke] -->

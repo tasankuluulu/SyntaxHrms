@@ -1,15 +1,19 @@
 package com.hrms.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -45,7 +49,7 @@ public class CommonMethods extends PagesInitializer {
 	 * @param element
 	 */
 	public static void jsClick(WebElement element) {
-		getJSExecutor().executeScript("arguments[0].click;", element);
+		getJSExecutor().executeScript("arguments[0].click();", element);
 	}
 
 	/**
@@ -80,35 +84,20 @@ public class CommonMethods extends PagesInitializer {
 	}
 
 	/**
-	 * Method reads excel file and returns the cell value
+	 * Method that will take a screenshot and store with name in specified location
+	 * with .png extension
 	 * 
-	 * @param sheetName - Needed sheet name
-	 * @param row
-	 * @param cell
-	 * @return
-	 * @throws IOException
+	 * @param fileName
 	 */
-	public static String getFromExcel(String sheetName, int row, int cell) throws IOException {
-		FileInputStream fis = new FileInputStream(Constants.EXCELFILE_PATH);
-		Workbook wbook = new XSSFWorkbook(fis);
-		Sheet sheet = wbook.getSheet(sheetName);
-		Row row2 = sheet.getRow(row);
-		return sheet.getRow(row).getCell(cell).toString();
+	public static void takeScreenshot(String fileName) {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(src, new File(Constants.SCREENSHOT_FILEPATH + fileName + ".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
-
-	public static void writeIntoExcel(String sheet, int row, int cell, String value) throws IOException {
-
-		FileInputStream fis = new FileInputStream(Constants.EXCELFILE_PATH);
-		Workbook book = new XSSFWorkbook(fis);
-
-		book.getSheet(sheet).getRow(row).createCell(cell).setCellValue(value);
-		FileOutputStream fos = new FileOutputStream(Constants.EXCELFILE_PATH);
-		book.write(fos);
-		book.close();
-		fis.close();
-		fos.close();
-	}
-	
-	
 
 }

@@ -20,7 +20,7 @@ public class EmployeeListPageElements extends BaseClass {
 	public WebElement searchBtn;
 	
 	@FindBy(xpath = "//table[@id='resultTable']/tbody/tr")
-	public List<WebElement> rows;
+	public List<WebElement> empListRows;
 
 	public EmployeeListPageElements() {
 		PageFactory.initElements(driver, this);

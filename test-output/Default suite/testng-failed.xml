@@ -3,14 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.hrms.testcases.LoginTest">
+      <class name="com.hrms.testcases.AddEmployeesTest">
         <methods>
-          <include name="invalidLogin" invocation-numbers="1 2"/>
-          <include name="validLogin"/>
           <include name="tearDown"/>
+          <include name="addEmployee"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.hrms.testcases.LoginTest -->
+      </class> <!-- com.hrms.testcases.AddEmployeesTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
