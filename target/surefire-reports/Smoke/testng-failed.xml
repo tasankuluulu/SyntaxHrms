@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Smoke]">
+  <listeners>
+    <listener class-name="com.hrms.utils.Listeners"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="Smoke(failed)">
+    <groups>
+      <run>
+        <include name="smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.hrms.testcases.AddEmployeesTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="addEmployee"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.hrms.testcases.AddEmployeesTest -->
+    </classes>
+  </test> <!-- Smoke(failed) -->
+</suite> <!-- Failed suite [Smoke] -->

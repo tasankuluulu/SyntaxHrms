@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 35.977 s <<< FAILURE! - in TestSuite
+com.hrms.testcases.AddEmployeesTest.addEmployee  Time elapsed: 9.643 s  <<< FAILURE!
+java.lang.NullPointerException
+	at com.hrms.testcases.AddEmployeesTest.addEmployee(AddEmployeesTest.java:29)
+

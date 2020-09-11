@@ -15,6 +15,8 @@ import com.hrms.utils.ConfigsReader;
 import com.hrms.utils.Constants;
 import com.hrms.utils.ExcelUtility;
 
+
+
 public class AddEmployeesTest extends CommonMethods {
 
 	@Test(groups = "smoke")
@@ -24,14 +26,15 @@ public class AddEmployeesTest extends CommonMethods {
 		sendText(login.passwordTextBox, ConfigsReader.getPropValue("password"));
 		click(login.loginBtn);
 		waitForClickability(dashboard.pim);
-		jsClick(dashboard.pim);
+//		jsClick(dashboard.pim);
+		click(dashboard.pim);
+		click(addEmp.addEmpBtn);
 
 		List<Map<String, String>> employeeList = ExcelUtility.excelToListMap(Constants.EXCELFILE_PATH, "Sample");
 		SoftAssert soft = new SoftAssert();
 		for (Map<String, String> map : employeeList) {
 			int i = 1;
-			waitForClickability(addEmp.addEmpBtn);
-			jsClick(addEmp.addEmpBtn);
+			
 			String firstName = map.get("FirstName");
 			String lastName = map.get("LastName");
 			sendText(addEmp.firstName, firstName);
@@ -41,6 +44,8 @@ public class AddEmployeesTest extends CommonMethods {
 			i++;
 			click(addEmp.save);
 			soft.assertEquals(addEmp.empInfo.getText(), firstName + " " + lastName);
+			waitForClickability(addEmp.addEmpBtn);
+			jsClick(addEmp.addEmpBtn);
 		}
 
 //		ExcelUtility.openExcel(Constants.EXCELFILE_PATH);

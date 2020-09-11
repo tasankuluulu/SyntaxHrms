@@ -63,8 +63,9 @@ public class ExcelUtility {
 		return list;
 
 	}
-	
-	public static void saveIntoExcel(String fromFilePath, String sheet, int rowNum, int colNum, String value, String outputFilePath) {
+
+	public static void saveIntoExcel(String fromFilePath, String sheet, int rowNum, int colNum, String value,
+			String outputFilePath) {
 		openExcel(fromFilePath);
 		getSheet(sheet);
 		book.getSheet(sheet).getRow(rowNum).createCell(colNum).setCellValue(value);
@@ -78,7 +79,7 @@ public class ExcelUtility {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

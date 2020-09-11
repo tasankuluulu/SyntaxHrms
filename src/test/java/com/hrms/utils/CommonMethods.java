@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Row;
@@ -93,11 +95,23 @@ public class CommonMethods extends PagesInitializer {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(src, new File(Constants.SCREENSHOT_FILEPATH + fileName + ".png"));
+			FileUtils.copyFile(src, new File(Constants.SCREENSHOT_FILEPATH + fileName + getTimeStamp() + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+	}
+
+	/**
+	 * This method will generate timeStamp
+	 * 
+	 * @return
+	 */
+	public static String getTimeStamp() {
+		Date date = new Date();
+		System.out.println(date.getTime());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+		return sdf.format(date);
 	}
 
 }
